@@ -2,9 +2,23 @@
 #+VISIBILITY: children
 #+TODO: TODO(t!) NEXT(n@/!) INPROGRESS(i!) HOLD(h@/!) | DONE(d!) CANCELLED(c@/!)
 
-* MECOOL M8S PRO W Android TV Box
+* Mecool M8s Pro W Android Tv Box
 
 [[https://image2.geekbuying.com/ggo_pic/2017-09-26/20170926095931kfgdjzn.jpg]]
+
+* Table of content                                                    :TOC_6:
+- [[#mecool-m8s-pro-w-android-tv-box][Mecool M8s Pro W Android Tv Box]]
+  - [[#specification][Specification]]
+  - [[#analogies][Analogies]]
+  - [[#firmwares-recommended][Firmwares (recommended)]]
+  - [[#device-tree-dtb][Device Tree (dtb)]]
+    - [[#getting-dtbimg][Getting dtb.img]]
+    - [[#extracting-dtbs][Extracting dtb's]]
+    - [[#read-info-about-dtbs][Read info about dtb's]]
+  - [[#enable-multi-boot][Enable multi boot]]
+  - [[#linux-installation][Linux installation]]
+    - [[#armbian][Armbian]]
+      - [[#armbian_598_aml-g12_ubuntu_bionic_default_530_20191002img][Armbian_5.98_Aml-g12_Ubuntu_bionic_default_5.3.0_20191002.img]]
 
 ** Specification
 
