@@ -1,0 +1,154 @@
+#+STARTUP: content
+#+VISIBILITY: children
+#+TODO: TODO(t!) NEXT(n@/!) INPROGRESS(i!) HOLD(h@/!) | DONE(d!) CANCELLED(c@/!)
+
+* MECOOL M8S PRO W Android TV Box Specification
+
+[[https://image2.geekbuying.com/ggo_pic/2017-09-26/20170926095931kfgdjzn.jpg]]
+
+- CPU – Amlogic S905W quad core ARM Cortex-A53 @ 1.2GHz
+  - Blue board rev2.1
+- GPU – [[https://developer.arm.com/ip-products/graphics-and-multimedia/mali-gpus/mali-450-gpu][Mali 450MP]] GPU @ 650 MHz
+  - OpenGL ES 2.0
+  - OpenVG 1.1
+- OS – Android 7.1.1
+- Memory – 2GB DDR3
+- Storage – 16GB eMMC flash + micro SD card slot (up to 32GB)
+- Video Output – HDMI 2.0, AV port
+- Audio – HDMI, AV port (stereo audio)
+- Video Codecs – 4K H.265, MPEG1/2/4, H.264, HD AVC/VC-1, RM/RMVB, Xvid/DivX3/4/5/6, RealVideo8/9/10
+- Video Formats – 4K@30fps, H.265, AVI, H.264, VC-1, MPEG-2, MPEG-4, DIVD/DIVX, Real8/9/10, RM,RMVB, PMP, FLV, MP4, M4V, VOB, WMV, 3GP, MKV
+- Connectivity – 10/100M Ethernet, 802.11 b/g/n Wi-Fi
+- USB – 2x USB 2.0 host ports
+- Misc – IR receiver
+- Power Supply – DC 5V/2A
+- Dimensions 10.20 x 10.20 x 2.10 cm
+- Weight – 110g
+
+* Analogies
+- Tanix TX3 mini
+- X96 mini
+- Odroid C2
+
+* Firmwares (recommended)
+- [[https://mega.nz/#F!mcEXRKoC!jrclf4sQsJca9nKty2AJrA][Mecool M8S PRO W TVStock Nexus ROM (Android TV 7.1)]]
+- [[https://mega.nz/#!YZZAnQBJ!JV9Soi7BYVTRNhTOTuK5eCWaZkbcw5uJSLuYvshLaBY][M8S_PRO_W-ota-20180802.182556.V0213.zip]] for rev2.*
+- [[https://mega.nz/#!7RV3WIKJ!ZqEljfbbTWV9LOygRnvTDPQqxwZddvtQ-DkBlvILaw8][Lunn-ota-20190418.114957.V0213.zip]]
+
+* Device Tree (dtb)
+|------------------------+----+---------------------|
+| Mecool M8S Pro W S905W | 2G | gxl_p281_2g.dtb     |
+|------------------------+----+---------------------|
+
+** Getting dtb.img
+
+Download firmware.
+
+#+BEGIN_SRC sh
+unzip M8S_PRO_W-ota-20180802.182556.V0213.zip
+#+END_SRC
+
+** Extracting dtb's
+
+#+BEGIN_SRC sh
+git clone https://github.com/PabloCastellano/extract-dtb.git --depth=1
+cd extract-dtb
+./extract-dtb.py dtb.img
+cd dtb
+#+END_SRC
+
+Listing dtb's.
+
+#+BEGIN_SRC conf
+00_kernel
+01_dtbdump_Amlogic.dtb
+02_dtbdump_Amlogic.dtb
+#+END_SRC
+
+** Read info about dtb's
+
+#+BEGIN_SRC sh
+pip install pyfdt
+#+END_SRC
+
+Write simple script.
+
+#+BEGIN_SRC python
+from pyfdt.pyfdt import FdtBlobParse
+
+with open('dtb/01_dtbdump_Amlogic.dtb', 'rb') as infile:
+    dtb = FdtBlobParse(infile)
+    print(dtb.to_fdt().to_dts())
+#+END_SRC
+
+See info.
+
+#+BEGIN_SRC conf
+/dts-v1/;
+// version:             17
+// last_comp_version:   16
+// boot_cpuid_phys:     0x0
+
+/ {
+    model = "Amlogic";
+    compatible = "amlogic, Gxbb";
+    amlogic-dt-id = "gxl_p28x_1g";
+    interrupt-parent = <0x00000001>;
+    #address-cells = <0x00000002>;
+    #size-cells = <0x00000002>;
+    mali {
+        #cooling-cells = <0x00000002>;
+        compatible = "arm,mali-450";
+        interrupt-parent = <0x00000001>;
+        reg = <0x00000000 0xd00c0000 0x00000000 0x00040000 0x00000000 0xc1104440 0x00000000 0x00001000 0x00000000 0xc8100000 0x00000000 0x00001000 0x00000000 0xc883c000 0x00000000 0x00001000 0x00000000 0xc1104440 0x00000000 0x00001000>;
+        interrupts = <0x00000000 0x000000a0 0x00000004 0x00000000 0x000000a1 0x00000004 0x00000000 0x000000a2 0x00000004 0x00000000 0x000000a3 0x00000004 0x00000000 0x000000a4 0x00000004 0x00000000 0x000000a5 0x00000004 0x00000000 0x000000a6 0x00000004 0x00000000 0x000000a7 0x00000004 0x00000000 0x000000a8 0x00000004 0x00000000 0x000000a9 0x00000004>;
+        interrupt-names = "IRQGP", "IRQGPMMU", "IRQPP", "IRQPMU", "IRQPP0", "IRQPPMMU0", "IRQPP1", "IRQPPMMU1", "IRQPP2", "IRQPPMMU2";
+        pmu_domain_config = <0x00000001 0x00000002 0x00000004 0x00000004 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000001 0x00000002 0x00000000>;
+        pmu_switch_delay = <0x0000ffff>;
+        num_of_pp = <0x00000003>;
+        def_clock = <0x00000003>;
+        sc_mpp = <0x00000003>;
+        tbl = <0x00000002 0x00000003 0x00000004 0x00000005 0x00000006 0x00000006>;
+        clocks = <0x00000007 0x00000008 0x00000007 0x00000009 0x00000007 0x00000011 0x00000007 0x00000012 0x00000007 0x0000001e 0x00000007 0x00000015 0x00000007 0x00000013 0x00000007 0x00000014>;
+...
+#+END_SRC
+* [[https://github.com/150balbes/Amlogic_s905/wiki/s905_multi_boot][Enable multi boot]]
+* Linux installation
+** Armbian
+
+[[https://yadi.sk/d/pHxaRAs-tZiei][Armbian images]]
+
+*** Armbian_5.98_Aml-g12_Ubuntu_bionic_default_5.3.0_20191002.img
+
+Write image on sdcard.
+
+#+BEGIN_SRC sh
+sudo dd if=Armbian_5.98_Aml-g12_Ubuntu_bionic_default_5.3.0_20191002.img of=/dev/sdb status=progress
+#+END_SRC
+
+Mount boot partition after successfully write image.
+
+#+BEGIN_SRC sh
+sudo mount /dev/sdb1 /mnt
+sudo nano /mnt/uEnv.ini
+#+END_SRC
+
+Set correct dtb name.
+
+#+BEGIN_SRC conf
+dtb_name=/dtb/meson-gxl-s905w-p281.dtb
+bootargs=root=LABEL=ROOTFS rootflags=data=writeback rw console=ttyAML0,115200n8 console=tty0 no_console_suspend consoleblank=0 fsck.fix=yes fsck.repair=yes net.ifnames=0
+#+END_SRC
+
+Unmount sdcard.
+
+#+BEGIN_SRC sh
+sudo umount /mnt
+#+END_SRC
+
+Put sdcard in the box and play with linux.
+
+#+BEGIN_SRC conf
+Login root
+Password 1234
+#+END_SRC
