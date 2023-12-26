@@ -15,7 +15,6 @@
   - [[#enable-multi-boot][Enable multi boot]]
   - [[#linux-installation][Linux installation]]
     - [[#armbian][Armbian]]
-      - [[#armbian_598_aml-g12_ubuntu_bionic_default_530_20191002img][Armbian_5.98_Aml-g12_Ubuntu_bionic_default_5.3.0_20191002.img]]
 
 ** Specification
 
@@ -125,15 +124,12 @@ See info.
         clocks = <0x00000007 0x00000008 0x00000007 0x00000009 0x00000007 0x00000011 0x00000007 0x00000012 0x00000007 0x0000001e 0x00000007 0x00000015 0x00000007 0x00000013 0x00000007 0x00000014>;
 ...
 #+END_SRC
-** [[https://forum.armbian.com/topic/17106-installation-instructions-for-tv-boxes-with-amlogic-cpus][Enable multi boot]]
-** Linux installation
+** [[https://forum.armbian.com/topic/17106-installation-instructions-for-tv-boxes-with-amlogic-cpus][Linux installation]]
 *** Armbian
 
 [[https://mirror.yandex.ru/mirrors/armbian/dl/aml-s9xx-box/archive][Armbian images]]
 
-**** Armbian_5.98_Aml-g12_Ubuntu_bionic_default_5.3.0_20191002.img
-
-*Attention. This information is outdated.*
+**** Attention. This information is outdated.
 
 Write image on sdcard.
 
