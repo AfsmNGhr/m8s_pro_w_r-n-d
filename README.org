@@ -3,10 +3,7 @@
 #+TODO: TODO(t!) NEXT(n@/!) INPROGRESS(i!) HOLD(h@/!) | DONE(d!) CANCELLED(c@/!)
 
 * Mecool M8s Pro W Android Tv Box
-
-[[https://image2.geekbuying.com/ggo_pic/2017-09-26/20170926095931kfgdjzn.jpg]]
-
-* Table of content                                                    :TOC_6:
+** Table of content                                                  :TOC_6:
 - [[#mecool-m8s-pro-w-android-tv-box][Mecool M8s Pro W Android Tv Box]]
   - [[#specification][Specification]]
   - [[#analogies][Analogies]]
@@ -128,13 +125,15 @@ See info.
         clocks = <0x00000007 0x00000008 0x00000007 0x00000009 0x00000007 0x00000011 0x00000007 0x00000012 0x00000007 0x0000001e 0x00000007 0x00000015 0x00000007 0x00000013 0x00000007 0x00000014>;
 ...
 #+END_SRC
-** [[https://github.com/150balbes/Amlogic_s905/wiki/s905_multi_boot][Enable multi boot]]
+** [[https://forum.armbian.com/topic/17106-installation-instructions-for-tv-boxes-with-amlogic-cpus/][Enable multi boot]]
 ** Linux installation
 *** Armbian
 
-[[https://yadi.sk/d/pHxaRAs-tZiei][Armbian images]]
+[[Attention. This information is outdated][Armbian images]]
 
 **** Armbian_5.98_Aml-g12_Ubuntu_bionic_default_5.3.0_20191002.img
+
+Attention. This information is outdated.
 
 Write image on sdcard.
 
