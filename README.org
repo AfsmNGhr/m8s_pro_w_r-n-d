@@ -12,7 +12,6 @@
     - [[#getting-dtbimg][Getting dtb.img]]
     - [[#extracting-dtbs][Extracting dtb's]]
     - [[#read-info-about-dtbs][Read info about dtb's]]
-  - [[#enable-multi-boot][Enable multi boot]]
   - [[#linux-installation][Linux installation]]
     - [[#armbian][Armbian]]
 
