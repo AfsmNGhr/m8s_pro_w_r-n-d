@@ -133,7 +133,7 @@ See info.
 
 **** Armbian_5.98_Aml-g12_Ubuntu_bionic_default_5.3.0_20191002.img
 
-Attention. This information is outdated.
+*Attention. This information is outdated.*
 
 Write image on sdcard.
 
